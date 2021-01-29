@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+body{
+    width: 100%;
+    height: 100%;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxB-wZpNU57wcRuKwzmPoGQo_w3szXHv5enA&usqp=CAU);
+    font-family: Roboto, sans-serif;
+}
+.wrapper {
+    width: 100%;
+    height: 100%;
+}
+.firstH2{
+    font-size: 64px;
+    color: rgb(93, 93, 93);
+    margin-bottom: 100px;
+}
+.twoH2{
+    text-align: center;
+    font-size: 48px;
+    color: rgb(93, 93, 93);
+}
+.wrapperStart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* display: none; */
+}
+
+.inputStyle {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 10px;
+    width: 360px;
+    height: 60px;
+    font-size: 24px;
+    border-radius: 20px;
+    text-align: center;
+    outline-style: none;
+    border: 1px solid rgb(82, 80, 80);
+}
+
+#startBtn{
+    cursor: pointer;
+    background-color: rgb(158, 158, 158);
+
+}
+#startBtn:active{
+    margin-top: 15px;
+}
+
+.wrapperGame {
+    display: none;
+    /* display: block; */
+}
+
+.wrapperUnknownWord {
+    margin-top: 25px;
+    width: 100%;
+    height: 100px;
+    background-color: antiquewhite;
+}
+.listLetters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.letter {
+    text-align: center;
+    margin: 20px;
+    
+    font-size: 30px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.letter::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 4px;
+    background-color: #f31515;
+    margin-top: 35px;
+}
+.leterDispley{
+    display: none;
+}
+
+.wrapperAnswer {
+    margin-top: 20px;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+#btnAnswer{
+    cursor: pointer;
+}
+.btnAnswer:active{
+    margin-top: 15px;
+}
+.inputAnswer{
+}
+
+
+#list{
+    display: flex;
+    flex-wrap: wrap;
+}
+#list div{
+    font-size: 22px;
+    padding-left: 20px;
+    color: red;
+    padding-right: 5px;
+    font-weight: bold;
+}
