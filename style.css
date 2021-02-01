@@ -7,6 +7,7 @@ body{
     font-family: Roboto, sans-serif;
 }
 .wrapper {
+    position: relative;
     width: 100%;
     height: 100%;
 }
@@ -27,6 +28,7 @@ body{
     flex-direction: column;
     /* display: none; */
 }
+
 
 .inputStyle {
     padding-left: 5px;
@@ -70,7 +72,6 @@ body{
 .letter {
     text-align: center;
     margin: 20px;
-    
     font-size: 30px;
     position: relative;
     display: flex;
@@ -117,4 +118,74 @@ body{
     color: red;
     padding-right: 5px;
     font-weight: bold;
+}
+
+.textAsk{
+    font-size: 24px;
+    font-weight: bold;
+}
+.textAsk > span{
+    color: rgb(206, 120, 7);
+    font-weight: 600;
+}
+
+.divWord{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.errorWord{
+    color: rgb(226, 43, 43);
+    padding-bottom: 15px;
+    position: absolute;
+    text-align: center;
+    display: none;
+}
+
+.errorWord > span {
+    color: rgb(89, 0, 255);
+    font-size: 30px;
+}
+.blur{
+    font-size: 30px;
+    color: rgb(55, 0, 255);
+}
+
+
+.errorLetterStyle{
+    display: flex;
+    font-weight: 800;
+    font-size: 24px;
+}
+.errorLetterStyle span{
+    padding-left: 10px;
+    color: chocolate;
+}
+.gameOwer{
+    position: relative;
+    display: none;
+    justify-content: center;
+    margin-top: 10%;
+    text-align: center;
+}
+.endInfo{
+    position: absolute;
+    top: 50%;
+
+}
+.endText {
+    font-weight: bold;
+}
+
+.endText:nth-child(1){
+    font-size: 48px;
+}
+.endText:nth-child(2){
+    font-size: 24px;
+}
+
+#endInput{
+
 }

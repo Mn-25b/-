@@ -12,26 +12,45 @@
     <div class="wrapper">
         <div class="wrapperStart" id='startBlock'>
             <h2 class="firstH2">Загадайте Слово</h2>
-            <input id="inputAsk" class="inputStart inputStyle" type="text" placeholder="Напишите вопрос">
-            <input id="inputWord" class="inputStart inputStyle" type="text" placeholder="Напишите ответ">
-            <input class="inputStyle" id="startBtn" type="submit" value="Начать">
+            <div class='divWord'>
+                <input id="inputAsk" class="inputStart inputStyle" type="text" placeholder="Напишите вопрос"><span
+                    id="mesegErrorQust" class="errorWord"></span>
+            </div>
+            <div class='divWord'>
+                <input id="inputWord" class="inputStart inputStyle" type="text" placeholder="Напишите ответ">
+                <span id="mesegErrorWord" class="errorWord"></span>
+            </div>
+            <div>
+                <input class="inputStyle" id="startBtn" type="submit" value="Начать">
+            </div>
         </div>
 
         <div class='wrapperGame'>
             <h2 class="twoH2">Игра началась</h2>
-            <div>Вопрос: <span id='question'></span></div>
+            <div class="textAsk">Вопрос: <span id='question'></span></div>
             <div class='wrapperUnknownWord'>
                 <div class='listLetters'>
                 </div>
             </div>
             <div class="wrapperAnswer">
-                <input id="inputAnswer" class="inputAnswer inputStyle" type="text" placeholder="введите букву">
-                <input id="btnAnswer" class="btnAnswer inputStyle" type="submit" value="проверить">
+                <div class="divWord"><input id="inputAnswer" class="inputAnswer inputStyle" type="text"
+                        placeholder="введите букву" maxlength="1"><span id="mesegErrorAns" class="errorWord"></span>
+                </div>
+                <div><input id="btnAnswer" class="btnAnswer inputStyle" type="submit" value="проверить"></div>
+                <!-- onClick="fori()" -->
             </div>
-            <h2>ошибки</h2>
-            <div id="list" ></div>
+            <div class="errorLetterStyle">ошибки: <span id='errorCouns'></span></div>
+            <div id="list"></div>
+        </div>
+        <div class="gameOwer" id='endGame'>
+            <div class="endInfo">
+                <div class="endText" id="textResult">вы проиграли</div>
+                <div class="endText">хотите попробывать еще</div>
+                <input id="endInput" class="inputStyle" type="submit" value="еще раз">
+            </div>
         </div>
     </div>
+
 
     <script src="script.js"></script>
 </body>
