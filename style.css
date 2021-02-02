@@ -183,9 +183,14 @@ body{
     font-size: 48px;
 }
 .endText:nth-child(2){
+    padding-top: 20px;
     font-size: 24px;
 }
 
 #endInput{
-
+    cursor: pointer;
+    margin-top: 20px;
+}
+#endInput:active{
+    margin-top: 25px;
 }

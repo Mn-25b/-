@@ -11,6 +11,11 @@ const $listLetters = document.getElementsByClassName('listLetters')[0]
 const $errorCouns = document.getElementById('errorCouns')
 const $textResult = document.getElementById('textResult')
 const $endGame = document.getElementById('endGame')
+const $endInput = document.getElementById('endInput')
+const $mesegErrorQust = document.getElementById('mesegErrorQust')
+const $mesegErrorWord = document.getElementById('mesegErrorWord')
+
+
 
 
 $startBtn.addEventListener('click', function () {
@@ -20,10 +25,19 @@ $startBtn.addEventListener('click', function () {
     const checkWord = nameWord.split([])
     const checkQuestion = question.split([])
 
+
+    $inputAsk.addEventListener('focus', function () {
+        $mesegErrorQust.style.display = 'none'
+    })
+    $inputWord.addEventListener('focus', function () {
+        $mesegErrorWord.style.display = 'none'
+    })
+
     if (checkQuestion.length === 0) {
         styleErrorValue2('вы ничего не вели')
     } else if (checkWord.length === 0) {
         styleErrorValue('вы ничего не вели')
+
     } else if (checkArray(checkWord) === true) {
         styleErrorValue(`Не должно быть пропусков, используйте <span>_</span>`)
     } else {
@@ -40,14 +54,15 @@ $startBtn.addEventListener('click', function () {
 })
 
 function styleErrorValue(attText) {
-    const $mesegErrorWord = document.getElementById('mesegErrorWord')
+
     $mesegErrorWord.innerHTML = attText
     $mesegErrorWord.style.display = 'block'
     $inputWord.style.height = '80px'
     $inputWord.style.paddingBottom = '20px'
+
 }
 function styleErrorValue2(attText) {
-    const $mesegErrorQust = document.getElementById('mesegErrorQust')
+
     $mesegErrorQust.innerHTML = attText
     $mesegErrorQust.style.display = 'block'
     $inputAsk.style.height = '80px'
@@ -81,11 +96,11 @@ function brokenWord(nameWord) {
             $listLetters.insertAdjacentHTML("beforeend", `<div class="letter"><span class="leterDispley">${letter}</span></div>`)
         }
     }
-
+    const $mesegErrorAns = document.getElementById('mesegErrorAns')
     $btnAnswer.addEventListener('click', function () {
         const answer = $inputAnswer.value
-        if (answer == '') {
-            const $mesegErrorAns = document.getElementById('mesegErrorAns')
+        if (answer == '' || answer === ' ') {
+
             $mesegErrorAns.innerHTML = 'вы ничего не ввели'
             $mesegErrorAns.style.display = 'block'
             $inputAnswer.style.height = '80px'
@@ -97,8 +112,12 @@ function brokenWord(nameWord) {
         }
 
     })
-}
 
+    $inputAnswer.addEventListener('focus', function () {
+        $mesegErrorAns.style.display = 'none'
+    })
+}
+let checkWin = 0
 function check(arreyWord, answer) {
 
     arreyWord.forEach((item, index, array) => {
@@ -108,6 +127,15 @@ function check(arreyWord, answer) {
             let jo = letter.childNodes[0]
             console.log(jo)
             jo.classList.remove('leterDispley')
+            if (letter.className !== 'leterDispley') {
+                ++checkWin
+            }
+        }
+        console.log(checkWin)
+        console.log(arreyWord.length)
+        if (checkWin === arreyWord.length) {
+            end()
+            $textResult.innerHTML = 'поздравляю вы победили!'
         }
     });
 
@@ -116,7 +144,6 @@ function check(arreyWord, answer) {
     if (pos == -1) {
         $listError.insertAdjacentHTML("beforeend", `<div><span>${answer}</span></div>`)
         fori()
-        
     }
 
 }
@@ -125,8 +152,18 @@ let errorLetter = 0
 function fori() {
     $errorCouns.innerHTML = (`<div><span> ${++errorLetter}</span></div>`)
 
-    if ( errorLetter == 1) {
-        $wrapperGame.style.display = 'none'
-        $endGame.style.display = 'flex'
+    if (errorLetter == 11) {
+        end()
+        $textResult.innerHTML = 'вы проиграли!'
     }
+}
+
+
+function end() {
+    $wrapperGame.style.display = 'none'
+    $endGame.style.display = 'flex'
+
+    $endInput.addEventListener('click', function () {
+        document.location.reload()
+    })
 }
