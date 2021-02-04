@@ -29,7 +29,9 @@ body{
     /* display: none; */
 }
 
-
+.canvasDiv{
+    text-align: center;
+}
 .inputStyle {
     padding-left: 5px;
     padding-right: 5px;

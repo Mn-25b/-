@@ -70,10 +70,6 @@ function styleErrorValue2(attText) {
 }
 
 
-
-
-
-
 function checkArray(my_arr) {
     for (let i = 0; i < my_arr.length; i++) {
         if (my_arr[i] === ' ') {
@@ -107,7 +103,8 @@ function brokenWord(nameWord) {
             $inputAnswer.style.paddingBottom = '20px'
         } else {
             document.getElementById('inputAnswer').value = ""
-            check(arreyWord, answer.toUpperCase())
+            let pres = arreyWord
+            check(pres, arreyWord, answer.toUpperCase())
 
         }
 
@@ -118,21 +115,30 @@ function brokenWord(nameWord) {
     })
 }
 let checkWin = 0
-function check(arreyWord, answer) {
+function check(pres, arreyWord, answer) {
 
-    arreyWord.forEach((item, index, array) => {
+    console.log(arreyWord)
+    console.log(pres)
+    let pos = arreyWord.indexOf(answer);
+    console.log(pos)
+    if (pos == -1) {
+        $listError.insertAdjacentHTML("beforeend", `<div><span>${answer}</span></div>`)
+        fori()
+    }
+    pres.forEach((item, index, array) => {
+        let arrayCheck = []
         console.log(`${item} имеет позицию ${index} в ${array}`)
         if (answer === item) {
             const letter = document.getElementsByClassName('letter')[index]
             let jo = letter.childNodes[0]
             console.log(jo)
+            delete pres[index]
             jo.classList.remove('leterDispley')
             if (letter.className !== 'leterDispley') {
                 ++checkWin
             }
         }
-        console.log(checkWin)
-        console.log(arreyWord.length)
+        console.log(checkWin, arreyWord.length)
         if (checkWin === arreyWord.length) {
             end()
             $textResult.innerHTML = 'поздравляю вы победили!'
@@ -140,18 +146,14 @@ function check(arreyWord, answer) {
     });
 
 
-    let pos = arreyWord.indexOf(answer);
-    if (pos == -1) {
-        $listError.insertAdjacentHTML("beforeend", `<div><span>${answer}</span></div>`)
-        fori()
-    }
 
 }
 
 let errorLetter = 0
 function fori() {
-    $errorCouns.innerHTML = (`<div><span> ${++errorLetter}</span></div>`)
-
+    ++errorLetter
+    $errorCouns.innerHTML = (`<div><span> ${errorLetter}</span></div>`)
+    peple(errorLetter)
     if (errorLetter == 11) {
         end()
         $textResult.innerHTML = 'вы проиграли!'
@@ -166,4 +168,53 @@ function end() {
     $endInput.addEventListener('click', function () {
         document.location.reload()
     })
+}
+var canvas = document.getElementById('tutorial');
+var ctx = canvas.getContext('2d');
+function peple(clicks) {
+    if (clicks == 1) {
+        ctx.moveTo(230, 290);
+        ctx.lineTo(290, 290);
+        ctx.stroke();
+    } else if (clicks == 2) {
+        ctx.moveTo(260, 290);
+        ctx.lineTo(260, 20);
+        ctx.stroke();
+    } else if (clicks == 3) {
+        ctx.moveTo(260, 20);
+        ctx.lineTo(120, 20);
+        ctx.stroke()
+    } else if (clicks == 4) {
+        ctx.moveTo(220, 20);
+        ctx.lineTo(260, 60);
+        ctx.stroke()
+    } else if (clicks == 5) {
+        ctx.moveTo(120, 20);
+        ctx.lineTo(120, 60);
+        ctx.stroke()
+    } else if (clicks == 6) {
+        ctx.beginPath()
+        ctx.arc(120, 90, 30, 0, Math.PI * 2, true)
+        ctx.stroke()
+    } else if (clicks == 7) {
+        ctx.moveTo(120, 120);
+        ctx.lineTo(120, 210);
+        ctx.stroke()
+    } else if (clicks == 8) {
+        ctx.moveTo(120, 150);
+        ctx.lineTo(80, 160);
+        ctx.stroke()
+    } else if (clicks == 9) {
+        ctx.moveTo(120, 150);
+        ctx.lineTo(160, 160);
+        ctx.stroke()
+    } else if (clicks == 10) {
+        ctx.moveTo(120, 210);
+        ctx.lineTo(100, 250);
+        ctx.stroke()
+    } else {
+        ctx.moveTo(120, 210);
+        ctx.lineTo(140, 250);
+        ctx.stroke()
+    }
 }
